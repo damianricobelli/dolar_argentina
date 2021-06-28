@@ -4,7 +4,8 @@ const styles = {
   global: () => ({
     body: {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      bg: useColorModeValue("gray.100", "gray.800")
+      bg: useColorModeValue("blue.800", "gray.800"),
+      overflow: "hidden"
     }
   })
 }

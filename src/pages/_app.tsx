@@ -13,7 +13,7 @@ import Head from "next/head"
 import { ChakraProvider } from "@chakra-ui/react"
 import MyTheme from "@styles/theme"
 
-// import Layout from "@components/common/Layout"
+import Layout from "@components/common/Layout"
 
 // import "focus-visible/dist/focus-visible"
 // import { Global, css } from "@emotion/react"
@@ -55,9 +55,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ChakraProvider theme={MyTheme}>
         {/* <Global styles={GlobalStyles} /> */}
-        {/* <Layout pageProps={pageProps}> */}
-        <Component {...pageProps} />
-        {/* </Layout> */}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ChakraProvider>
     </>
   )
