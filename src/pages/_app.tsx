@@ -15,9 +15,6 @@ import MyTheme from "@styles/theme"
 
 import Layout from "@components/common/Layout"
 
-// import "focus-visible/dist/focus-visible"
-// import { Global, css } from "@emotion/react"
-
 import { Router } from "next/dist/client/router"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
@@ -36,25 +33,17 @@ Router.events.on("routeChangeError", () => {
   NProgress.done()
 })
 
-// const GlobalStyles = css`
-//   .js-focus-visible :focus:not([data-focus-visible-added]) {
-//     outline: none;
-//     box-shadow: none;
-//   }
-// `
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Estellars - Cuadros decorativos y estelares</title>
+        <title>Dolarista</title>
         <meta content="initial-scale=1.0, width=device-width" name="viewport" />
-        <meta content="Estellars" name="author" />
-        <meta content="Estellars" name="copyright" />
+        <meta content="Dolarista" name="author" />
+        <meta content="Dolarista" name="copyright" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <ChakraProvider theme={MyTheme}>
-        {/* <Global styles={GlobalStyles} /> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
