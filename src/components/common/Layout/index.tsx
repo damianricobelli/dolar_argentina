@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { FiHome, FiMenu, FiMoon, FiSun, FiRefreshCcw } from "react-icons/fi"
 
-import Link from "next/Link"
+import Link from "next/link"
 
 import { AiOutlineDollarCircle, AiOutlineEuroCircle } from "react-icons/ai"
 
