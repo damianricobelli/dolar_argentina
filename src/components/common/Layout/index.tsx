@@ -15,7 +15,7 @@ import {
   FlexProps,
   useColorMode
 } from "@chakra-ui/react"
-import { FiHome, FiMenu, FiMoon, FiSun, FiRefreshCcw } from "react-icons/fi"
+import { FiHome, FiMenu, FiMoon, FiSun } from "react-icons/fi"
 
 import Link from "next/link"
 
@@ -23,7 +23,6 @@ import { AiOutlineDollarCircle, AiOutlineEuroCircle } from "react-icons/ai"
 
 import { IconType } from "react-icons"
 import { ReactText } from "react"
-import { mutate } from "swr"
 
 interface LinkItemProps {
   name: string
@@ -32,11 +31,10 @@ interface LinkItemProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome, path: "/" },
-  { name: "Dólar", icon: AiOutlineDollarCircle, path: "dolar" },
-  { name: "Euro", icon: AiOutlineEuroCircle, path: "euro" },
-  { name: "Real", icon: AiOutlineDollarCircle, path: "real" },
-  { name: "Pesos", icon: AiOutlineDollarCircle, path: "pesos" }
+  { name: "Dólar", icon: FiHome, path: "/" },
+  { name: "Euro", icon: AiOutlineEuroCircle, path: "/euro" },
+  { name: "Real", icon: AiOutlineDollarCircle, path: "/real" },
+  { name: "Pesos", icon: AiOutlineDollarCircle, path: "/pesos" }
 ]
 
 export default function SidebarWithHeader({
@@ -115,7 +113,7 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ icon, path, children, ...rest }: NavItemProps) => {
   return (
-    <Link href={path}>
+    <Link href={path} passHref>
       <Flex
         align="center"
         p="4"
@@ -182,13 +180,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          onClick={() => mutate("dolar")}
-          size="lg"
-          variant="ghost"
-          aria-label="change color mode"
-          icon={<FiRefreshCcw />}
-        />
         <IconButton
           onClick={() => toggleColorMode()}
           size="lg"
