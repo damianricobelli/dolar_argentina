@@ -41,7 +41,11 @@ export const GridDataObject = ({
             )
           }
         } else if (isBank) {
-          return <Card key={index} data={data[key]} isBank chartData={null} />
+          if (!data[key].nombre._text.includes("Banco")) {
+            return null
+          } else {
+            return <Card key={index} data={data[key]} isBank chartData={null} />
+          }
         }
       })}
     </SimpleGrid>
