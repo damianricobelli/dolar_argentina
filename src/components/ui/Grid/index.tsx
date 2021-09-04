@@ -5,12 +5,21 @@ import Card from "../Card"
 export const GridDataObject = ({
   data,
   isGeneral,
-  isBank,
+  isBank = false,
   blueDollarEvolutionData,
-  officialDollarEvolutionData
+  officialDollarEvolutionData,
+  principal
 }: any) => {
   return (
-    <SimpleGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} mt={8} spacing={10}>
+    <SimpleGrid
+      columns={
+        isBank && !principal
+          ? { base: 1, sm: 2 }
+          : { base: 1, sm: 2, lg: 3, xl: 4 }
+      }
+      mt={8}
+      spacing={10}
+    >
       {Object.keys(data).map((key: string, index: number) => {
         if (isGeneral) {
           const nameCurrency = data[key].nombre._text
@@ -32,27 +41,7 @@ export const GridDataObject = ({
             )
           }
         } else if (isBank) {
-          if (
-            !data[key].nombre._text.includes("Banco") &&
-            !data[key].nombre._text.includes("Rebanking") &&
-            !data[key].nombre._text.includes("Wilobank") &&
-            !data[key].nombre._text.includes("BruBank")
-          ) {
-            return null
-          } else {
-            return <Card key={index} data={data[key]} isBank chartData={null} />
-          }
-        } else {
-          if (
-            data[key].nombre._text.includes("Banco") ||
-            data[key].nombre._text.includes("Rebanking") ||
-            data[key].nombre._text.includes("Wilobank") ||
-            data[key].nombre._text.includes("BruBank")
-          ) {
-            return null
-          } else {
-            return <Card key={index} data={data[key]} isBank chartData={null} />
-          }
+          return <Card key={index} data={data[key]} isBank chartData={null} />
         }
       })}
     </SimpleGrid>
